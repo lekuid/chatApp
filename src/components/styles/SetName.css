@@ -1,0 +1,46 @@
+.SetName {
+    display: flex;
+    margin: 18% 45% 0% 30%;
+    background-color: var(--secondary);
+    border-radius: 10px;
+  }
+  
+  .SetName .SetNameButton {
+    padding: 8% 8%;
+  
+    color: var(--primary);
+    background-color: var(--secondary);
+  
+    border-width: 1px;
+    border-color: var(--secondary);
+    border-radius: 0px 10px 10px 0px;
+  
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: 30px;
+  
+    transition: 0.2s ease-in-out;
+  }
+  
+  .SetName .SetNameInput {
+    padding: 0% 10%;
+  
+    font-size: 30px;
+  
+    color: var(--secondary);
+    background-color: var(--primary);
+  
+    border-color: var(--secondary);
+    border-radius: 10px 0px 0px 10px;
+    border-width: 5px;
+    border-style: solid;
+  }
+  
+  .SetName .SetNameInput::placeholder {
+    opacity: 20%;
+  }
+
+  .ConfigButton:hover {
+    cursor: pointer;
+    color: var(--secondary);
+    background-color: var(--primary);
+  }

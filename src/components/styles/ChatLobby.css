@@ -1,0 +1,99 @@
+.ChatLobby {
+    display: grid;
+    width: 20vw;
+    height: 100vh;
+    grid-auto-rows: 8% 80% 12%;
+  
+    background-color: rgb(10, 2, 0);
+  }
+  
+  .ChatLobby .ChatLobbyHeader {
+    display: flex;
+    grid-row: 1;
+  
+    background-color: var(--primary);
+  
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .ChatLobby .ChatLobbyHeader .UserName {
+    color: var(--secondary);
+  }
+  
+  .ChatLobby .UserList {
+    grid-row: 2;
+  
+    scroll-behavior: smooth;
+  
+    overflow-x: hidden;
+    overflow-y:scroll;
+  }
+  
+  ::-webkit-scrollbar {
+    width: 0px;
+  }
+  
+  .ChatLobby .UserList .User {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--primary);
+    margin: 2% 2%;
+    padding: 1% 2%;
+
+    width: 100%;
+  
+    border: none;
+
+    transition: 0.2s ease-in-out;
+  }
+
+  .ChatLobby .UserList .User .UserName {
+    color: var(--secondary);
+    font-size: 20px;
+    padding: 0% 3%;
+    pointer-events: none;
+  }
+
+  .ChatLobby .UserList .User .UserStatus {
+    color: var(--secondary);
+    font-size: 10px;
+    padding: 0% 5%;
+    pointer-events: none;
+  }
+
+  .ChatLobby .UserList .User:hover {
+    background-color: var(--secondary);
+    color: var(--primary);
+  }
+
+  .ChatLobby .UserList .User:active {
+    background-color: var(--tertiary);
+  }
+  
+  .ChatLobby .UserList .User:hover .UserName {
+    color: var(--primary);
+  }
+
+  .ChatLobby .UserList .User:hover .UserStatus {
+    color: var(--primary);
+  }
+  
+  .ChatLobby .SearchBox {
+    display: flex;
+    grid-row: 3;
+  }
+  
+  .ChatLobby .SearchBox .SearchButton {
+    background-color: var(--secondary);
+    color: var(--primary);
+  
+    margin: 2% 2%;
+    width: 100%;
+  
+    border: none;
+    border-radius: 10px;
+
+    transition: 0.2s ease-in-out;
+  }

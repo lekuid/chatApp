@@ -1,0 +1,23 @@
+.LoginPage .LoginButton {
+    position: absolute;
+    margin: 18% 46%;
+    padding: 2% 3%;
+  
+    color: var(--primary);
+    background-color: var(--secondary);
+  
+    border-width: 1px;
+    border-color: var(--secondary);
+    border-radius: 10px;
+  
+    font-family: "Lucida Console", "Courier New", monospace;
+    font-size: 30px;
+  
+    transition: 0.2s ease-in-out;
+  }
+
+  .ConfigButton:hover {
+    cursor: pointer;
+    color: var(--secondary);
+    background-color: var(--primary);
+  }
