@@ -3,17 +3,24 @@ import ChatLobby from "./ChatLobby"
 import React from 'react'
 import './styles/Chat.css'
 
-const Chat = ({ userName, userId, otherUserName, userSelect, message, user, getText }) => {
+const Chat = ({ userId, otherUserName, userSelect, message, users, getText }) => {
     return (
         <div className="MainPage">
             <div className="ChatPage">
-                <ChatBox userName={otherUserName} Message={message} getText={getText} userId={userId}/>
+                <ChatBox userId={userId} userName={otherUserName} Message={message} getText={getText} />
             </div>
             <div className="ChatList">
-                <ChatLobby userName={userName} userSelect={userSelect} user={user}/>
+                <ChatLobby user={users} userSelect={userSelect} />
             </div>
         </div>
     )
 }
+
+// Users : list of all users using app, on or off
+// userId : Id of the currently selected user
+// otherUserName : UserName of the currently selected user
+// userSelect : Selector for user from Users
+// message : Current typed message sent
+// getText : All messages between current user and selected user
 
 export default Chat

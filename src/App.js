@@ -5,7 +5,7 @@ import { signInAnonymously, onAuthStateChanged } from "firebase/auth";
 import Login from './components/Login';
 import SetName from './components/SetName';
 import Chat from './components/Chat'
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 
 function App() {
@@ -17,6 +17,10 @@ function App() {
   const [nameBool, nameBoolSet] = useState(false)
   const [otherId, setOtherId] = useState("")
   const [texts, setTexts] = useState({key:{text:"", time:""}})
+
+  // useEffect(() => {
+  //   getText()
+  // }, [Math.round((Date.now()/100000)*100000)])
 
   var auth;
   const dataBase = getDatabase(Firebase)
@@ -66,21 +70,21 @@ function App() {
   }
 
   
-  const getText = (user) => {
+  const getText = () => {
 
     const textVar = []
-    const sentRef = ref(dataBase, `messages/${userId}/${user}`)
-    const recvRef = ref(dataBase, `messages/${user}/${userId}`)
+    const sentRef = ref(dataBase, `messages/${userId}/${otherId}`)
+    const recvRef = ref(dataBase, `messages/${otherId}/${userId}`)
 
     onValue(sentRef, (m) => {
       if(m.exists()) {
        Object.keys(m.val()).map((mssg) => textVar.push(m.val()[mssg]))
-      } else textVar.push({})
+      }
     })
     onValue(recvRef, (m) => {
       if(m.exists()) {
         Object.keys(m.val()).map((mssg) => textVar.push(m.val()[mssg]))
-      } else textVar.push({})
+      }
     })
 
     let sortMssg = textVar.sort((a, b) => (a.time > b.time ? 1 : -1));
@@ -107,15 +111,14 @@ function App() {
       ?
       //<ChatBox userName={userName} Message={(x) => console.log(x)}/>
       <Chat 
-      user = {userList}
+      users = {userList}
       userId={otherId}
-      userName={userName}
       getText={texts}
       otherUserName={otherUserName}
       userSelect={(u) => {
-        getText(u)
         setOtherId(u)
         setOtherUserName(userList[u].userName)
+        getText()
       }}
       message={(message)=> sendText(message)}/>
       :

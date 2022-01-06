@@ -2,40 +2,34 @@ import React from 'react'
 import './styles/ChatLobby.css'
 
 
-const ChatLobby = ({ userName, userSelect, user }) => {
+const ChatLobby = ({ userSelect, user }) => {
 
     return (
         <div className='ChatLobby'>
             <div className='ChatLobbyHeader'>
                 <h4 
                 className='UserName'>
-                    {userName}
+                    Users
                 </h4>
             </div>
             <div className='UserList'>
                 <ul>
-                    {Object.keys(user).map((entry) => (
+                    {Object.keys(user).map((id) => (
                         <button
-                        key={entry}
+                        key={id}
                         className='User'
-                        onClick={(x)=>{userSelect(entry)}}>
+                        onClick={()=>{userSelect(id)}}>
                             <h4 
                             className='UserName'>
-                                {user[entry].userName}
+                                {user[id].userName}
                             </h4>
                             <h5 
                             className='UserStatus'>
-                                {user[entry].userState ? "Online" : "Offline"}
+                                {user[id].userState ? "Online" : "Offline"}
                             </h5>
                         </button>
                     ))}
                 </ul>
-            </div>
-            <div className='SearchBox'>
-                <button 
-                className='SearchButton ConfigButton'>
-                    Search
-                </button>
             </div>
         </div>
     )
