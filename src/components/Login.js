@@ -1,21 +1,13 @@
 import React from 'react'
-import { getAuth, signInAnonymously, onAuthStateChanged } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import './styles/Login.css'
 
-const Login = ({ user, loginState }) => {
+const Login = ({ auth }) => {
 
     const login = () => {
-        const auth = getAuth()
-        signInAnonymously(auth)
-        .then(onAuthStateChanged(auth, (u) => {
-            if(u) {
-                loginState(true)
-                user(u.uid)
-            } else {
-                loginState(false)
-            }
-        }))
+        auth(getAuth())
     }
+    
 
     return (
         <div className='LoginPage Background'>

@@ -13,23 +13,50 @@
   
     background-color: var(--primary);
   
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
   }
   
   .ChatBox .ChatBoxHeader .UserName {
     color: var(--secondary);
   }
-  
-  .ChatBox .ChatBoxHeader .ChatBoxHeaderButton {
-    margin: 0% 1%;
-    padding: 0.5% 1%;
-  
-    background-color: var(--secondary);
-    color: var(--primary);
-  
-    border: none;
+
+  .ChatBox .Chat {
+    grid-row: 2;
+    overflow: scroll;
+    scroll-behavior: smooth;
+    display:flex;
+    flex-direction: column-reverse;
+  }
+
+  .ChatBox .Chat .ChatMessages {
+    color: var(--secondary);
+    list-style: none;
+  }
+
+  .ChatBox .Chat .ChatMessages li .Other {
+    padding: 1%;
+    margin: 2% 55% 2% 2%;
+    background-color: var(--primary);
     border-radius: 5px;
+  }
+
+  .ChatBox .Chat .ChatMessages li .Sender {
+    padding: 0% 1%;
+    margin: 2% 2% 2% 55%;
+    margin-right: auto;
+    background-color: var(--primary);
+    border-radius: 5px;
+  }
+
+  .ChatBox .Chat .ChatMessages p {
+    font-size: 18px;
+    padding: 2%;
+  }
+
+  .ChatBox .Chat .ChatMessages .time {
+    font-size: 12px;
+    padding: 2%;
   }
   
   .ChatBox .ChatBoxMessage {
@@ -66,10 +93,4 @@
   
     background-color: var(--secondary);
     color: var(--primary);
-  }
-
-  .ConfigButton:hover {
-    cursor: pointer;
-    color: var(--secondary);
-    background-color: var(--primary);
   }

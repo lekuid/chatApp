@@ -1,21 +1,8 @@
 import React from 'react'
 import './styles/ChatLobby.css'
 
-const ChatLobby = ({ userName, userSelect }) => {
 
-    const users = [
-        {name:"Ammy", status:"online"},
-        {name:"Tim", status:"offline"},
-        {name:"Armin", status:"offline"},
-        {name:"George", status:"offline"},
-        {name:"Alisha", status:"online"},
-        {name:"Bruh", status:"offline"},
-        {name:"Tim", status:"offline"},
-        {name:"Armin", status:"offline"},
-        {name:"George", status:"offline"},
-        {name:"Alisha", status:"online"},
-        {name:"Cat", status:"offline"},
-    ]
+const ChatLobby = ({ userName, userSelect, user }) => {
 
     return (
         <div className='ChatLobby'>
@@ -27,18 +14,18 @@ const ChatLobby = ({ userName, userSelect }) => {
             </div>
             <div className='UserList'>
                 <ul>
-                    {users.map((user)=> (
-                        <button 
-                        id={user.name}
+                    {Object.keys(user).map((entry) => (
+                        <button
+                        key={entry}
                         className='User'
-                        onClick={(x)=>{userSelect(x.target.id)}}>
+                        onClick={(x)=>{userSelect(entry)}}>
                             <h4 
                             className='UserName'>
-                                {user.name}
+                                {user[entry].userName}
                             </h4>
                             <h5 
                             className='UserStatus'>
-                                {user.status}
+                                {user[entry].userState ? "Online" : "Offline"}
                             </h5>
                         </button>
                     ))}
