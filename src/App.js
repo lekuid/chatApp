@@ -19,6 +19,7 @@ function App() {
   const [nameBool, nameBoolSet] = useState(false)
   const [otherId, setOtherId] = useState("")
   const [texts, setTexts] = useState({key:{text:"", time:""}})
+  const[userList, setUserList] = useState(null)
 
   // useEffect(() => {
   //   getText()
@@ -50,8 +51,6 @@ function App() {
       userState: true
     })
   }
-
-  var userList
 
 
   //const setOther = (u) => { 
@@ -88,7 +87,7 @@ function App() {
           }
         })
         onValue(allUserRef, (x) => {
-          userList = x.val()
+          setUserList(x.val())
         })
 
       let sortMssg = textVar.sort((a, b) => (a.time > b.time ? 1 : -1));
