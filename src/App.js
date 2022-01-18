@@ -52,9 +52,7 @@ function App() {
   }
 
   var userList
-  onValue(allUserRef, (x) => {
-    userList = x.val()
-  })
+
 
   //const setOther = (u) => { 
     //setOtherId(u)
@@ -88,6 +86,9 @@ function App() {
           if(m.exists()) {
             Object.keys(m.val()).map((mssg) => textVar.push(m.val()[mssg]))
           }
+        })
+        onValue(allUserRef, (x) => {
+          userList = x.val()
         })
 
       let sortMssg = textVar.sort((a, b) => (a.time > b.time ? 1 : -1));
