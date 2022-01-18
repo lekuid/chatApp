@@ -6,6 +6,8 @@ import Login from './components/Login';
 import SetName from './components/SetName';
 import Chat from './components/Chat'
 import { useState } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+
 
 
 function App() {
@@ -70,27 +72,31 @@ function App() {
   }
 
   
-  const getText = () => {
+  const GetText = () => {
 
     const textVar = []
     const sentRef = ref(dataBase, `messages/${userId}/${otherId}`)
     const recvRef = ref(dataBase, `messages/${otherId}/${userId}`)
 
-    onValue(sentRef, (m) => {
-      if(m.exists()) {
-       Object.keys(m.val()).map((mssg) => textVar.push(m.val()[mssg]))
-      }
-    })
-    onValue(recvRef, (m) => {
-      if(m.exists()) {
-        Object.keys(m.val()).map((mssg) => textVar.push(m.val()[mssg]))
-      }
+    useFrame(()=> {
+        onValue(recvRef, (m) => {
+          if(m.exists()) {
+            Object.keys(m.val()).map((mssg) => textVar.push(m.val()[mssg]))
+          }
+        })
+        onValue(sentRef, (m) => {
+          if(m.exists()) {
+            Object.keys(m.val()).map((mssg) => textVar.push(m.val()[mssg]))
+          }
+        })
+
+      let sortMssg = textVar.sort((a, b) => (a.time > b.time ? 1 : -1));
+      setTexts(sortMssg)
     })
 
-    let sortMssg = textVar.sort((a, b) => (a.time > b.time ? 1 : -1));
-
-    setTexts(sortMssg)
-    console.log(texts)
+    return (
+      null
+    )
   }
 
   return (
@@ -118,11 +124,13 @@ function App() {
       userSelect={(u) => {
         setOtherId(u)
         setOtherUserName(userList[u].userName)
-        getText()
       }}
       message={(message)=> sendText(message)}/>
       :
       <></>}
+      <Canvas>
+        <GetText/>
+      </Canvas>
     </div>
   );
 

@@ -4,7 +4,7 @@ import './styles/ChatBox.css'
 
 const ChatBox = ({ userName, userId, Message, getText }) => {
 
-    const [message, setMessage] = useState("")
+    const [message, setMessage] = useState(null)
     //const [texts, setTexts] = useState({})
 
     //setTexts(getText)
